@@ -43,7 +43,7 @@ To install the theme, add this to your NixOS configuration (edge cases are descr
 boot.plymouth.enable = true;
 services.displayManager.sddm.enable = true;
 services.desktopManager.plasma6.enable = true;
-services.displayManager.defaultSession = "aerothemeplasma"; # for x11, append x11
+services.displayManager.defaultSession = "aerothemeplasma";
 
 programs.aeroshell = {
   enable = true;
