@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   src = aeroshell-kwin-repo;
   
   postPatch = ''
-    sed -i "24,65d" CMakeLists.txt
+    sed -i "24,53d" CMakeLists.txt
     substituteInPlace CMakeLists.txt \
       --replace-fail "find_package(Vulkan REQUIRED)" "find_package(KF6 ''${KF_MIN_VERSION} REQUIRED COMPONENTS Config I18n)" \
       --replace-fail "add_subdirectory(effects_cpp)" "add_subdirectory(rules)"
