@@ -82,6 +82,7 @@
             thumbnail-aero = self.callPackage ./pkgs/aeroshell/kwin/thumbnail-aero.nix {};
             thumbnails = self.callPackage ./pkgs/aeroshell/kwin/thumbnails.nix {};
 
+            components = self.callPackage ./pkgs/aeroshell/plasma/components.nix {};
             kcmloader = self.callPackage ./pkgs/aeroshell/plasma/kcmloader.nix {};
             libaeroshellutils = self.callPackage ./pkgs/aeroshell/plasma/libaeroshellutils.nix {};
             libshowdesktop = self.callPackage ./pkgs/aeroshell/plasma/libshowdesktop.nix {};

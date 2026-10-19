@@ -71,7 +71,7 @@ in
       dimscreenaero fadingpopupsaero flip3d loginaero smod smodpeekeffect 
       kwin-shared-data smodpeekscript squashaero thumbnail-aero thumbnails
 
-      kcmloader libaeroshellutils libshowdesktop libtaskmanager
+      components kcmloader libaeroshellutils libshowdesktop libtaskmanager
       aeroglassblur aeroglide launchfeedback smodglow smodsnap
     ] ++ (with atpkgs; lib.optionals cfg.aerothemeplasma.enable [
       cursors icons sounds
