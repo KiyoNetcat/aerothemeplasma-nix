@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-desktopcontainment";
-  version = "2026-06-27";
+  version = "2026-10-13";
   src = aerothemeplasma-repo;
 
   buildInputs = with kdePackages; [

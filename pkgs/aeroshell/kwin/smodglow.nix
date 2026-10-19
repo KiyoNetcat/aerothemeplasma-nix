@@ -10,7 +10,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-smodglow";
-  version = "2026-08-22";
+  version = "2026-10-03";
   src = aeroshell-smod-repo;
 
   buildInputs = [ smod kdePackages.kwin ];

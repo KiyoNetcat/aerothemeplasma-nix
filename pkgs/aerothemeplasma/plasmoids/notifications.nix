@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-notifications";
-  version = "2026-03-02";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   buildInputs = with kdePackages; [

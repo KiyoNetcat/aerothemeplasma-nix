@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-volume";
-  version = "2026-02-27";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   buildInputs = with kdePackages; [ plasma-workspace knotifyconfig plasma5support ];

@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-systemtray";
-  version = "2026-02-28";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   preConfigure = ''

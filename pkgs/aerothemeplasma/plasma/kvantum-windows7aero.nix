@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "aerothemeplasma-kvantum-windows7aero";
-  version = "2026-03-04";
+  version = "2026-09-02";
   src = aerothemeplasma-repo;
 
   dontUnpack = true;

@@ -10,7 +10,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-login-session";
-  version = "2026-03-14";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   preConfigure = ''

@@ -11,7 +11,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-aeroglide";
-  version = "2026-06-18";
+  version = "2026-10-03";
   src = aeroshell-kwin-repo;
 
   buildInputs = [ kdePackages.qttools wayland-protocols kdePackages.kwin ];

@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-atpootb";
-  version = "2026-06-19";
+  version = "2026-10-15";
   src = aerothemeplasma-repo;
 
   postPatch = ''

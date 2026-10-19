@@ -8,7 +8,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-libaeroshellutils";
-  version = "2026-05-21";
+  version = "2026-05-20";
   src = aeroshell-workspace-repo;
 
   postPatch = ''

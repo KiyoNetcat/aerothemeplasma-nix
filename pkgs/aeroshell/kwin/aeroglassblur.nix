@@ -11,7 +11,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-aeroglassblur";
-  version = "2026-08-08";
+  version = "2026-10-13";
   src = aeroshell-kwin-repo;
 
   buildInputs = [ kdePackages.qttools wayland-protocols kdePackages.kwin ];

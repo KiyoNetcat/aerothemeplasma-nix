@@ -23,12 +23,12 @@ let
 in 
 stdenvNoCC.mkDerivation {
   pname = "plymouthvista";
-  version = "2026-02-22";
+  version = "2026-07-26";
   src = fetchFromGitHub {
     owner = "furkrn";
     repo = "PlymouthVista";
-    rev = "cc6592a29387462d003c2c95cb9cb5df3fea851f";
-    hash = "sha256-14wLKz9CL+ZwcgT8x8BXDs105dORl9CL4ITvjWx1gRI=";
+    rev = "e2b9605a7b4d649bb0e314cce8bbe9912633cfef";
+    hash = "sha256-bB4fXkyeKo9Ykzw18xM2BZGjJMPF6NGA84d502FDEWc=";
   };
 
   env = {

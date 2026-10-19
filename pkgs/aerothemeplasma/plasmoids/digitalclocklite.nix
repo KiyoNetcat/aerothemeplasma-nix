@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "aerothemeplasma-digitalclocklite";
-  version = "2026-05-28";
+  version = "2026-10-18";
   src = aerothemeplasma-repo;
 
   dontUnpack = true;

@@ -12,7 +12,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-smodsnap";
-  version = "2026-06-18";
+  version = "2026-10-11";
   src = aeroshell-kwin-repo;
 
   buildInputs = [ kdePackages.qttools wayland-protocols smod kdePackages.kwin ];

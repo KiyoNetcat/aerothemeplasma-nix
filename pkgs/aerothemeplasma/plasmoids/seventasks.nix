@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-seventasks";
-  version = "2026-03-06";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   buildInputs = with kdePackages; [

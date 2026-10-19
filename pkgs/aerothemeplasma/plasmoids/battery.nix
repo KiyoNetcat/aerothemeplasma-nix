@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "aerothemeplasma-battery";
-  version = "2026-03-15";
+  version = "2026-10-12";
   src = aerothemeplasma-repo;
 
   dontUnpack = true;
