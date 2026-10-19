@@ -8,6 +8,7 @@
   cmake,
   ninja,
   lib,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-smodsnap";
@@ -18,4 +19,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "kwin_effect_smodsnap" ];
   installTargets = "effects_cpp/kwin-effect-smodsnap-v2/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "effects_cpp/kwin-effect-smodsnap-v2" ];
+  };
 }

@@ -3,7 +3,8 @@
   lib,
   aeroshell-kwin-repo,
   kdePackages,
-  cmake
+  cmake,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-kwin-shared-data";
@@ -23,4 +24,8 @@ stdenv.mkDerivation {
   ];
   nativeBuildInputs = [ cmake kdePackages.wrapQtAppsHook ];
   cmakeFlags = [ (lib.cmakeBool "KWIN_INSTALL_MISC" false) ];
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "po" "rules" ];
+  };
 }

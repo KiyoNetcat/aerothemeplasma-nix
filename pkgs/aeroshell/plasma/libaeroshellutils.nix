@@ -3,7 +3,8 @@
   aeroshell-workspace-repo,
   kdePackages,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-libaeroshellutils";
@@ -28,4 +29,8 @@ stdenv.mkDerivation {
     ninja libaeroshellutils/install
     runHook postInstall
   '';
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "libaeroshellutils" ];
+  };
 }

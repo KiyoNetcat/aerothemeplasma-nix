@@ -4,7 +4,8 @@
   kdePackages,
   pkg-config,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-desktopcontainment";
@@ -23,4 +24,11 @@ stdenv.mkDerivation {
     mkdir -p $out/share/plasma/plasmoids
     cp -r $src/plasma/plasmoids/io.gitgud.wackyideas.desktopcontainment $out/share/plasma/plasmoids
   '';
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ 
+      "plasma/plasmoids/src/desktopcontainment" 
+      "plasma/plasmoids/io.gitgud.wackyideas.desktopcontainment"
+    ];
+  };
 }

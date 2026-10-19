@@ -4,7 +4,8 @@
   kdePackages,
   pkg-config,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-notifications";
@@ -19,4 +20,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "io.gitgud.wackyideas.notifications" ];
   installTargets = "plasma/plasmoids/src/notifications_src/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "plasma/plasmoids/src/notifications_src" ];
+  };
 }

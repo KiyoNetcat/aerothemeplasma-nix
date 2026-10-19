@@ -5,7 +5,8 @@
   segoe-ui,
   makeFontsConf,
   settings ? {},
-  lib
+  lib,
+  nyakisato
 }:
 let
   pvizeAttrs = attrs: lib.mapAttrs (name: value: 
@@ -56,4 +57,6 @@ stdenvNoCC.mkDerivation {
 
     runHook postBuild
   '';
+
+  passthru.updateScript = nyakisato { };
 }

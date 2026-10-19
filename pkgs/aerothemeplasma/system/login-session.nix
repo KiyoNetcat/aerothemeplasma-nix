@@ -6,6 +6,7 @@
   qt6,
   kdePackages,
   cmake,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-login-session";
@@ -30,5 +31,10 @@ stdenv.mkDerivation {
       --replace-fail "/etc/xdg/aerothemeplasma:/etc/xdg:" "${xdg}/etc/xdg:"
   '';
 
-  passthru.providedSessions = [ "aerothemeplasma" ];
+  passthru = {
+    providedSessions = [ "aerothemeplasma" ];
+    updateScript = nyakisato {
+      subpaths = [ "plasma/sddm/login-sessions" ];
+    };
+  };
 }

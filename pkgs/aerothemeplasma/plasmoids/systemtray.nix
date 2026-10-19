@@ -4,7 +4,8 @@
   kdePackages,
   pkg-config,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-systemtray";
@@ -24,4 +25,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "io.gitgud.wackyideas.systemtray" ];
   installTargets = "plasma/plasmoids/src/systemtray_src/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "plasma/plasmoids/src/systemtray_src" ];
+  };
 }

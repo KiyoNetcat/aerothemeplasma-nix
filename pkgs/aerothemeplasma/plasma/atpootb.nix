@@ -4,7 +4,8 @@
   kdePackages,
   pkg-config,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-atpootb";
@@ -34,5 +35,9 @@ stdenv.mkDerivation {
 
   meta = {
     mainProgram = "atpootb";
+  };
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "plasma/atpootb" ];
   };
 }

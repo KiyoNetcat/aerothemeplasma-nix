@@ -1,6 +1,7 @@
 {
   stdenvNoCC,
-  aerothemeplasma-repo
+  aerothemeplasma-repo,
+  nyakisato
 }:
 stdenvNoCC.mkDerivation {
   pname = "aerothemeplasma-kvantum-windows7aero";
@@ -15,4 +16,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
   dontFixup = true;
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "plasma/color_scheme/Aero.colors" ];
+  };
 }

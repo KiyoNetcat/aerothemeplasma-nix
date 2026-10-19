@@ -1,6 +1,7 @@
 {
   stdenvNoCC,
-  aerothemeplasma-repo
+  aerothemeplasma-repo,
+  nyakisato
 }:
 stdenvNoCC.mkDerivation {
   pname = "aerothemeplasma-digitalclocklite";
@@ -18,4 +19,9 @@ stdenvNoCC.mkDerivation {
 
     runHook postInstall
   '';
+  dontFixup = true;
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "plasma/plasmoids/io.gitgud.wackyideas.digitalclocklite" ];
+  };
 }

@@ -3,7 +3,8 @@
   lib,
   fetchFromGitLab,
   qt6,
-  lsb-release
+  lsb-release,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "linver";
@@ -23,4 +24,6 @@ stdenv.mkDerivation {
 
   postPatch = "substituteInPlace linver.pro --replace-fail 'target.path = /usr/bin' \"target.path = $out/bin\"";
   qtWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [lsb-release]}" ];
+
+  passthru.updateScript = nyakisato { };
 }

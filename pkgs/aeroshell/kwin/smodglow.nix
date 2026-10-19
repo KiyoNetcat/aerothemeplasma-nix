@@ -6,6 +6,7 @@
   smod,
   cmake,
   lib,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-smodglow";
@@ -15,4 +16,8 @@ stdenv.mkDerivation {
   buildInputs = [ smod kdePackages.kwin ];
   nativeBuildInputs = [ cmake pkg-config kdePackages.wrapQtAppsHook ];
   cmakeFlags = [ (lib.cmakeBool "BUILD_EFFECT" true) ];
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "gloweffect" ];
+  };
 }

@@ -7,6 +7,7 @@
   cmake,
   ninja,
   lib,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-aeroglassblur";
@@ -17,4 +18,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "aeroglassblur" ];
   installTargets = "effects_cpp/kde-effects-aeroglassblur/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "effects_cpp/glsl/outputmanagement.frag" "effects_cpp/kde-effects-aeroglassblur" ];
+  };
 }

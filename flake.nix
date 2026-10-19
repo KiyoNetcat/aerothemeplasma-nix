@@ -126,6 +126,9 @@
 
             plymouthvista = self.callPackage ./pkgs/external/system/plymouthvista.nix {};
             uac-polkit-agent = self.callPackage ./pkgs/external/system/uac-polkit-agent.nix {};
+
+            nyakisato = self.callPackage ./pkgs/internal/nyakisato.nix {};
+            nyakisatoizer = self.callPackage ./pkgs/internal/nyakisatoizer.nix {};
           })
         );
       };

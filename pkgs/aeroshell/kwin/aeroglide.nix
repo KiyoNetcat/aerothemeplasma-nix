@@ -7,6 +7,7 @@
   cmake,
   ninja,
   lib,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-aeroglide";
@@ -17,4 +18,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "aeroglide" ];
   installTargets = "effects_cpp/aeroglide/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "effects_cpp/aeroglide" ];
+  };
 }

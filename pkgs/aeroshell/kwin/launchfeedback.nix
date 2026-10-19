@@ -7,6 +7,7 @@
   cmake,
   ninja,
   lib,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aeroshell-launchfeedback";
@@ -17,4 +18,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
   ninjaFlags = [ "launchfeedback" ];
   installTargets = "effects_cpp/startupfeedback/install";
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ "effects_cpp/startupfeedback" ];
+  };
 }

@@ -4,7 +4,8 @@
   kdePackages,
   pkg-config,
   cmake,
-  ninja
+  ninja,
+  nyakisato
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-sevenstart";
@@ -28,4 +29,11 @@ stdenv.mkDerivation {
     substituteInPlace $out/share/plasma/plasmoids/io.gitgud.wackyideas.SevenStart/contents/ui/*.qml \
       --replace-quiet "import org.kde.plasma.core" "import io.gitgud.wackyideas.plasma.core"
   '';
+
+  passthru.updateScript = nyakisato {
+    subpaths = [ 
+      "plasma/plasmoids/src/sevenstart_src"
+      "plasma/plasmoids/io.gitgud.wackyideas.SevenStart"
+    ];
+  };
 }
