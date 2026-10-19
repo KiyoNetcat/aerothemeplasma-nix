@@ -2,17 +2,23 @@
   stdenv,
   aerothemeplasma-repo,
   kdePackages,
-  libplasma,
-  cmake
+  pkg-config,
+  cmake,
+  ninja
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-seventasks";
   version = "2026-03-06";
   src = aerothemeplasma-repo;
 
-  preConfigure = "cd plasma/plasmoids/src/seventasks_src";
-  buildInputs = [ libplasma ];
-  nativeBuildInputs = [ cmake kdePackages.wrapQtAppsHook ];
+  buildInputs = with kdePackages; [
+    plasma-workspace
+    knotifyconfig
+    plasma5support
+  ];
+  nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
+  ninjaFlags = [ "io.gitgud.wackyideas.seventasks" ];
+  installTargets = "plasma/plasmoids/src/seventasks_src/install";
   postInstall = ''
     mkdir -p $out/share/plasma/plasmoids
     cp -r $src/plasma/plasmoids/io.gitgud.wackyideas.seventasks $out/share/plasma/plasmoids

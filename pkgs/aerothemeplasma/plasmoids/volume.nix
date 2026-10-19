@@ -3,16 +3,18 @@
   aerothemeplasma-repo,
   kdePackages,
   pkg-config,
-  cmake
+  cmake,
+  ninja
 }:
 stdenv.mkDerivation {
   pname = "aerothemeplasma-volume";
   version = "2026-02-27";
   src = aerothemeplasma-repo;
 
-  preConfigure = "cd plasma/plasmoids/src/volume_src";
-  buildInputs = [ kdePackages.libplasma ];
-  nativeBuildInputs = [ cmake pkg-config kdePackages.wrapQtAppsHook ];
+  buildInputs = with kdePackages; [ plasma-workspace knotifyconfig plasma5support ];
+  nativeBuildInputs = [ cmake pkg-config ninja kdePackages.wrapQtAppsHook ];
+  ninjaFlags = [ "io.gitgud.wackyideas.volume" ];
+  installTargets = "plasma/plasmoids/src/volume_src/install";
   postInstall = ''
     mkdir -p $out/share/plasma/plasmoids
     cp -r $src/plasma/plasmoids/io.gitgud.wackyideas.volume $out/share/plasma/plasmoids
