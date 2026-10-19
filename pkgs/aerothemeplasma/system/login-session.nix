@@ -3,6 +3,7 @@
   lib,
   aerothemeplasma-repo,
   xdg,
+  qt6,
   kdePackages,
   cmake,
 }:
@@ -11,9 +12,16 @@ stdenv.mkDerivation {
   version = "2026-03-14";
   src = aerothemeplasma-repo;
 
-  preConfigure = "cd plasma/sddm/login-sessions";
+  preConfigure = ''
+    head -n 16 CMakeLists.txt | cat - plasma/sddm/login-sessions/CMakeLists.txt > temp
+    mv temp plasma/sddm/login-sessions/CMakeLists.txt
+    cd plasma/sddm/login-sessions
+  '';
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ kdePackages.extra-cmake-modules ];
+  buildInputs = [ kdePackages.extra-cmake-modules qt6.qtbase ];
+  # ECM throws an error about not finding QT,
+  # but we don't actually need it for this package
+  dontWrapQtApps = true;
 
   postFixup = ''
     substituteInPlace $out/bin/startatp-wayland \
