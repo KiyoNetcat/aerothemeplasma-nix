@@ -3,9 +3,7 @@
   lib,
   aerothemeplasma-repo,
   xdg,
-  qt6,
   kdePackages,
-  cmake,
   nyakisato
 }:
 stdenv.mkDerivation {
@@ -13,22 +11,20 @@ stdenv.mkDerivation {
   version = "2026-10-12";
   src = aerothemeplasma-repo;
 
-  preConfigure = ''
-    head -n 16 CMakeLists.txt | cat - plasma/sddm/login-sessions/CMakeLists.txt > temp
-    mv temp plasma/sddm/login-sessions/CMakeLists.txt
+  installPhase = ''
     cd plasma/sddm/login-sessions
-  '';
-  nativeBuildInputs = [ cmake ];
-  buildInputs = [ kdePackages.extra-cmake-modules qt6.qtbase ];
-  # ECM throws an error about not finding QT,
-  # but we don't actually need it for this package
-  dontWrapQtApps = true;
 
-  postFixup = ''
-    substituteInPlace $out/bin/startatp-wayland \
-      --replace-fail "$out/libexec/plasma-dbus-run-session-if-needed" "${kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed" \
-      --replace-fail "$out/bin/startplasma-wayland" "${kdePackages.plasma-workspace}/bin/startplasma-wayland" \
+    substituteInPlace startatp-wayland.cmake \
+      --replace-fail "@CMAKE_INSTALL_FULL_LIBEXECDIR@/plasma-dbus-run-session-if-needed" "${kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed" \
+      --replace-fail "\''${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland" "${kdePackages.plasma-workspace}/bin/startplasma-wayland" \
       --replace-fail "/etc/xdg/aerothemeplasma:/etc/xdg:" "${xdg}/etc/xdg:"
+
+    substituteInPlace aerothemeplasma.desktop.cmake \
+      --replace-fail "\''${CMAKE_INSTALL_FULL_BINDIR}/startatp-wayland" "$out/bin/startatp-wayland" \
+      --replace-fail "\''${PROJECT_VERSION}" "$(grep -m 1 "PROJECT_VERSION" ../../../CMakeLists.txt | sed "s/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/")"
+
+    install -Dm555 startatp-wayland.cmake $out/bin/startatp-wayland
+    install -Dm444 aerothemeplasma.desktop.cmake $out/share/wayland-sessions/aerothemeplasma.desktop
   '';
 
   passthru = {
